@@ -1,6 +1,6 @@
 # Github-Finder
 
-This project makes use of the Github API to Fetch data from github profiles based on an user's search query
+This project makes use of the Github API to Fetch data from github profiles based on an user's search query.
 
 ### Available Scripts
 

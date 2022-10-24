@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   font: normal normal normal 100%/1.5 Helvetica Neue, Helvetica, Arial,

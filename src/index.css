@@ -6,4 +6,11 @@ html,
 body {
   font: normal normal normal 100%/1.5 Helvetica Neue, Helvetica, Arial,
     sans-serif;
+  background: #323946;
+  color: #f5f5f5;
+}
+
+div.about-container {
+  max-width: 52rem;
+  width: 100%;
 }

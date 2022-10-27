@@ -12,26 +12,56 @@ export const GithubProvider = ({ children }) => {
 
   const initialState = {
     users: [],
-    loading: true,
+    loading: false,
   }
 
   const [state, dispatch] = useReducer(githubReducer, initialState)
 
-  const fetchUsers = async () => {
-    const res = await fetch(`${GITHUB_URL}/users`, {
+  //Get search results
+  const searchUsers = async (text) => {
+    setLoading()
+
+    /**
+     * * URLSearchParams
+     * ? Is part of the Web API
+     * ? https://developer.mozilla.org/es/docs/Web/API/URLSearchParams
+     * ? We set our params to be sent along the query (q) to the Github API end point
+     * ? based on params pased to searchUsers from UserSearch component it would be like
+     * ? https://api.github.com/search/users/?q=text
+     */
+
+    const params = new URLSearchParams({
+      q: text,
+    })
+
+    const res = await fetch(`${GITHUB_URL}/search/users?${params}`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
       },
     })
 
-    const data = await res.json()
+    /**
+     * * items
+     * ? we are destructuring items from the response Github API returns. Previosly data
+     */
 
-    // setUsers(data)
-    // setLoading(false)
+    const { items } = await res.json()
     dispatch({
       type: 'GET_USERS',
-      payload: data,
+      payload: items,
     })
+  }
+
+  const clearUsers = () => {
+    dispatch({
+      type: 'CLEAR_USERS',
+      payload: [],
+    })
+  }
+
+  //Set loading
+  const setLoading = () => {
+    dispatch({ type: 'SET_LOADING' })
   }
 
   return (
@@ -39,7 +69,8 @@ export const GithubProvider = ({ children }) => {
       value={{
         users: state.users, //This a REDUCER
         loading: state.loading, //This is a REDUCER
-        fetchUsers, //This is a function
+        searchUsers: searchUsers, //This is a function
+        clearUsers: clearUsers, //This is a function
       }}
     >
       {children}

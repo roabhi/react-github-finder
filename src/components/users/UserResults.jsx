@@ -1,14 +1,14 @@
-import { useEffect, useContext } from 'react'
+import { useContext } from 'react'
 import UserItem from './UserItem'
 import Spinner from '../layout/assets/Spinner'
 import GithubContext from '../../context/github/GithubContext'
 
 const UserResults = () => {
-  const { users, loading, fetchUsers } = useContext(GithubContext)
+  const { users, loading } = useContext(GithubContext)
 
-  useEffect(() => {
-    fetchUsers()
-  }) //Compiler companis if using empty dependency Array here ],[])
+  // useEffect(() => {
+  //   fetchUsers()
+  // }, []) //Compiler complais if using empty dependency Array here ],[]) BUT NEEDED WHEN USE REDUCER...
 
   if (!loading) {
     return (

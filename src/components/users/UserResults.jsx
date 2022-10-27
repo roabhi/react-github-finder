@@ -8,7 +8,7 @@ const UserResults = () => {
 
   useEffect(() => {
     fetchUsers()
-  })
+  }) //Compiler companis if using empty dependency Array here ],[])
 
   if (!loading) {
     return (

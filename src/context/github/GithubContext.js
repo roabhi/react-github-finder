@@ -12,6 +12,7 @@ export const GithubProvider = ({ children }) => {
 
   const initialState = {
     users: [],
+    user: {},
     loading: false,
   }
 
@@ -52,6 +53,36 @@ export const GithubProvider = ({ children }) => {
     })
   }
 
+  //Get simgle USER
+
+  const getUser = async (login) => {
+    setLoading()
+
+    const response = await fetch(`${GITHUB_URL}/users/${login}`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    })
+
+    /**
+     * * GET SINGLE USER
+     * ? We make sure the user exists so no 404
+     * ? IF NOT redirect to route /notfound
+     * ? Otherwise get the data which comes without any array (no need for destructuring)
+     * ? dispatch via Reducer with custom type and payload as the returned json from github API
+     */
+
+    if (response.status === 404) {
+      window.location = '/notfound'
+    } else {
+      const data = await response.json()
+      dispatch({
+        type: 'GET_USER',
+        payload: data,
+      })
+    }
+  }
+
   const clearUsers = () => {
     dispatch({
       type: 'CLEAR_USERS',
@@ -68,9 +99,11 @@ export const GithubProvider = ({ children }) => {
     <GithubContext.Provider
       value={{
         users: state.users, //This a REDUCER
+        user: state.user, //This is a REDUCER
         loading: state.loading, //This is a REDUCER
         searchUsers: searchUsers, //This is a function
         clearUsers: clearUsers, //This is a function
+        getUser: getUser, //This is a function
       }}
     >
       {children}

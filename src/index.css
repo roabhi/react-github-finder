@@ -43,3 +43,8 @@ div.about-container {
   width: 2rem;
   height: 2rem;
 }
+
+.custom-card-image .card.image-full:before {
+  border-radius: 0.5rem;
+  opacity: 0.45;
+}

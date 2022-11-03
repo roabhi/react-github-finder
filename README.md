@@ -1,34 +1,17 @@
+![React Github Finder](https://i.ibb.co/Hd5FGRf/localhost-3000-i-Pad-Mini-1.png 'React Github Finder')
+
 # Github-Finder
 
-This project makes use of the Github API to Fetch data from github profiles based on an user's search query.
+This project made in React 18 connects with the Github API to fetch data from profiles based on an user's search query.
 
-### Available Scripts
+So basically you can find any Github user by their username and see different public info available such as website, avatar and few other stats.
 
-In the project directory, you can run:
+Demo is [https://react-github-finder-alpha.vercel.app/](here)
 
-#### `npm start`
+### Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`npm install`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Running the App
 
-#### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-#### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-#### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+`npm start`

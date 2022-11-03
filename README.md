@@ -6,7 +6,7 @@ This project made in React 18 connects with the Github API to fetch data from pr
 
 So basically you can find any Github user by their username and see different public info available such as website, avatar and few other stats.
 
-Demo is [https://react-github-finder-alpha.vercel.app/](here)
+Demo is [here](https://react-github-finder-alpha.vercel.app/)
 
 ### Installation
 
